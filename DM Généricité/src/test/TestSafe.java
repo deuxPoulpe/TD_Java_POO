@@ -31,6 +31,7 @@ public class TestSafe {
 		c.buy(g);
 		Gemstone g2 = new Ruby(40);
 		g2.appraisal();
+		
 		mySafe.addGem(g2);
 		c.buy(mySafe);
 		

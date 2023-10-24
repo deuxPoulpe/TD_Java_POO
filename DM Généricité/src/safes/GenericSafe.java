@@ -91,7 +91,7 @@ public class GenericSafe<T> {
 		
 		return value;
 		*/
-	}
+	
 
 	/**
 	 * Getter of the property <tt>capacity</tt>
