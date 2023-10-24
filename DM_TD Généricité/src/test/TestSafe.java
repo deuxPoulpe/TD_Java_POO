@@ -113,6 +113,7 @@ public class TestSafe {
 		GenericSafe<GenericSafe<Gemstone>> gsg = new GenericSafe<GenericSafe<Gemstone>>(5);
 		GenericSafe<GenericSafe<WorthlessRock>> gsr = new GenericSafe<GenericSafe<WorthlessRock>>(5);
 
+
 	}
 
 }

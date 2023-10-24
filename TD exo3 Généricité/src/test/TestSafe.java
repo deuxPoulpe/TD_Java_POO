@@ -110,8 +110,11 @@ public class TestSafe {
 		// p2.expertize();
 		// System.out.println("The value of my safe after expertize is " +mySafe.getValue());
 		
-		GenericSafe<GenericSafe<Gemstone>> gsg = new GenericSafe<GenericSafe<Gemstone>>(5);
-		GenericSafe<GenericSafe<WorthlessRock>> gsr = new GenericSafe<GenericSafe<WorthlessRock>>(5);
+		// GenericSafe<GenericSafe<Gemstone>> gsg = new GenericSafe<GenericSafe<Gemstone>>(5);
+		// GenericSafe<GenericSafe<WorthlessRock>> gsr = new GenericSafe<GenericSafe<WorthlessRock>>(5);
+		
+		
+		GenericSafe<GenericSafe<Gemstone>> ggg = new GenericSafe<GenericSafe<Gemstone>>(2);
 
 	}
 

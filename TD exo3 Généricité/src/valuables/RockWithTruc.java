@@ -6,6 +6,8 @@ public class RockWithTruc extends WorthlessRock {
 		super(capac);
 	}
 
+	
+
 	@Override
 	public void truc() {
 		System.out.println("truc");

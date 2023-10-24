@@ -1,5 +1,7 @@
 package valuables;
 
+import safes.GenericSafe;
+
 public class Ruby extends Gemstone {
 
 	public Ruby(double myVolume) {
@@ -17,5 +19,7 @@ public class Ruby extends Gemstone {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 
 }

@@ -2,8 +2,9 @@ package safes;
 
 import valuables.Gemstone;
 import valuables.Valuable;
+import valuables.Storable;
 
-public class SafeWithCode<T extends Valuable> extends GenericSafe<T> {
+public class SafeWithCode<T extends Valuable &Storable<GenericSafe<T>>> extends GenericSafe<T> {
 	
 
 	private String code = "password";

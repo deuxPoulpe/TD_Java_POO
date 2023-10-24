@@ -5,6 +5,7 @@
 package safes;
 import valuables.Gemstone;
 import valuables.Valuable;
+import valuables.Storable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,7 +17,19 @@ import java.util.Set;
  * A simple safe
  * @author  ceichler
  */
-public class GenericSafe<T extends Valuable> implements valuables.Valuable {
+public class GenericSafe<T extends Valuable &Storable<GenericSafe<T>> > implements Valuable, Storable<GenericSafe<GenericSafe<T>>>  {
+
+
+
+	private GenericSafe<GenericSafe<T>> mySafe;
+
+	public void setMyContainer(GenericSafe<GenericSafe<T>> mySafe) {
+		this.mySafe = mySafe;
+	}
+
+	public GenericSafe<GenericSafe<T>> getMyContainer() {
+		return mySafe;
+	}
 
 
 	/**
@@ -131,16 +144,18 @@ public class GenericSafe<T extends Valuable> implements valuables.Valuable {
 
 		
 	
-	public T getGetm(T gem) {
-		Iterable<T> myContent = this.getMyContent();
+	public boolean getGetm(T gem) {
+
+		boolean find = false;
+
 		Iterator<T> iterator = myContent.iterator();
 		
-		while (iterator.hasNext()) {
+		while (iterator.hasNext() && !find) {
 			if (iterator.next().equals(gem)) {
-				return gem;
+				find = true;
         	}
     	}
-		return null;
+		return find;
 
 		
 	}
@@ -167,11 +182,11 @@ public class GenericSafe<T extends Valuable> implements valuables.Valuable {
 		//Is it full?
 		else if(isFull()) System.err.println("Impossible to add a gem; the safe is full!");
 		//Is the Gem already in another Safe?
-		//else if(gem.getMySafe()!=null) System.err.println("Impossible to add a gem; it's already in another safe!");
+		else if(gem.getMyContainer()!=null) System.err.println("Impossible to add a gem; it's already in another safe!");
 		//Good to go!
 		else{
 			myContent.add(gem);
-			//gem.setMySafe(this);
+			gem.setMyContainer(this);
 			this.currGemNb++;
 		}
 	}
@@ -188,7 +203,7 @@ public class GenericSafe<T extends Valuable> implements valuables.Valuable {
 		//Good to go!
 		else{
 			if(myContent.remove(gem)) {
-				//gem.setMySafe(null);
+				gem.setMyContainer(null);
 				this.currGemNb--;
 			}else System.err.println("Impossible to remove the specified gem; it is not in the safe!");
 		}
