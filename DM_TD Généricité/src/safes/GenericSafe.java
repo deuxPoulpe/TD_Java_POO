@@ -9,13 +9,14 @@ import valuables.Valuable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
  * A simple safe
  * @author  ceichler
  */
-public class GenericSafe<T> {
+public class GenericSafe<T extends Valuable> implements valuables.Valuable {
 
 
 	/**
@@ -67,7 +68,7 @@ public class GenericSafe<T> {
 	 * Getter of the property <tt>value</tt>
 	 * @return  value the safe's value
 	 */
-	/*
+	
 	public double getValue() {
 		this.value = 0;
 		
@@ -78,19 +79,8 @@ public class GenericSafe<T> {
 			this.value +=gem.getValue();
 		}
 		return this.value;
-		*/
-		
-		
-		/*
-		this.value = 0;
-		
-		//Parcours de collection, nous verrons cela plus tard!
-		myContent.forEach(g -> {if(g.getValue()!=-1) this.value += g.getValue();
-		else System.err.println("Value <= 0 for gem " + g + "has it been expertized?");
-		});
-		
-		return value;
-		*/
+
+	}
 	
 
 	/**
@@ -140,16 +130,21 @@ public class GenericSafe<T> {
 	}
 
 		
-	/*
-	public T SearchGem(T gem) {
-		for(T g : myContent) {
-			if (g.getVolume() > gem.getVolume()) {
-				return g;
-			}
-		}
+	
+	public T getGetm(T gem) {
+		Iterable<T> myContent = this.getMyContent();
+		Iterator<T> iterator = myContent.iterator();
+		
+		while (iterator.hasNext()) {
+			if (iterator.next().equals(gem)) {
+				return gem;
+        	}
+    	}
 		return null;
+
+		
 	}
-	*/
+	
 		
 	/**
 	 * Test wether the safe is full (if it contains a number of stones equal to its capacity)

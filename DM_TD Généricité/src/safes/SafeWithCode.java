@@ -1,9 +1,11 @@
 package safes;
 
 import valuables.Gemstone;
+import valuables.Valuable;
 
-public class SafeWithCode extends GenericSafe {
+public class SafeWithCode<T extends Valuable> extends GenericSafe<T> {
 	
+
 	private String code = "password";
 	private double value;
 
@@ -25,16 +27,21 @@ public class SafeWithCode extends GenericSafe {
 	}
 	
 	public double getValue() {
-	if (super.isOpened())
-	this.value = 0;
-	for (Gemstone gem : super.getMyContent()) {
-		if (gem.getValue() == -1) {
-			System.err.println("Not all gems are expertized");
+		if (super.isOpened()) {
+			value = super.getValue();
 		}
-		this.value +=gem.getValue();
+		else { 
+			System.err.println("Safe is closed");
+			value = -1;
+		}
+		return value;
 	}
-	return this.value;
-	
+
+	public void addGem(T g) {
+		if (super.isOpened()) {
+			super.addGem((g));
+		}
+		else System.err.println("Safe is closed");
 	}
 
 	
