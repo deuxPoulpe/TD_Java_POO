@@ -1,11 +1,11 @@
-package safes;
+// package safes;
 
-import valuables.Ruby;
+// import valuables.Ruby;
 
-public class RubySafe extends SafeWithCode<Ruby> {
+// public class RubySafe extends SafeWithCode<Ruby> {
 
-    public RubySafe() {
-        super();
-    }
+//     public RubySafe() {
+//         super();
+//     }
     
-}
+// }

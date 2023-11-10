@@ -1,5 +1,6 @@
 package valuables;
 import safes.GenericSafe;
+import exception.NotExpertisedException;
 
 /**
  * A precious gemstone
@@ -17,8 +18,14 @@ public abstract class Gemstone implements Valuable, Storable<GenericSafe<Gemston
 	/**
 	 * Getter of the property <tt>value</tt>
 	 * @return  Returns the value.
+	 * @throws NotExpertisedException
 	 */
-	public double getValue() {
+	public double getValue() throws NotExpertisedException {
+		if (this.value == -1 ){
+			throw new NotExpertisedException(this);
+		}
+			
+
 		return value;
 	}
 	

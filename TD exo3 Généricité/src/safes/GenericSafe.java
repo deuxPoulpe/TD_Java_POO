@@ -83,15 +83,26 @@ public class GenericSafe<T extends Valuable &Storable<GenericSafe<T>> > implemen
 	 */
 	
 	public double getValue() {
-		this.value = 0;
-		
-		for (T gem : myContent) {
-			if (gem.getValue() == -1) {
-				System.err.println("Not all gems are expertized");
-			}
-			this.value +=gem.getValue();
+		value = 0;
+		Iterator<T> it = this.myContent.iterator();
+		T gem = null;
+		if (it.hasNext()) {
+			gem = it.next();;
 		}
-		return this.value;
+		
+		
+
+		while (it.hasNext()) {
+			try {
+				value += gem.getValue();
+				gem = it.next();
+			} catch (Exception e) {
+				gem.appraisal();
+			}
+			
+		}
+		
+		return value;
 
 	}
 	

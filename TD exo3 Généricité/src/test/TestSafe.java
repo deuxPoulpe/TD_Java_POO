@@ -3,9 +3,6 @@
  */
 package test;
 
-import buyer.Client;
-import safes.*;
-import valuables.*;
 
 /**
  * @author ceichler
@@ -114,7 +111,7 @@ public class TestSafe {
 		// GenericSafe<GenericSafe<WorthlessRock>> gsr = new GenericSafe<GenericSafe<WorthlessRock>>(5);
 		
 		
-		GenericSafe<GenericSafe<Gemstone>> ggg = new GenericSafe<GenericSafe<Gemstone>>(2);
+		// GenericSafe<GenericSafe<Gemstone>> ggg = new GenericSafe<GenericSafe<Gemstone>>(2);
 
 	}
 
